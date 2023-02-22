@@ -11,10 +11,9 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class Bank implements BankInterface {
     private Map<Long, Account> accounts;
-    private AtomicLong number;
+
 
     public Bank() {
-        this.number = new AtomicLong();
         this.accounts = new ConcurrentHashMap<>();
     }
 
@@ -28,7 +27,7 @@ public class Bank implements BankInterface {
         return id;
     }
 
-    public Long openConsumerAccount(Person person, int pin, double startingDeposit) {
+    public  Long openConsumerAccount(Person person, int pin, double startingDeposit) {
         Long id = Sequence.getInstance().getNextValue();
         this.accounts.put(id, new ConsumerAccount(person, id, pin, startingDeposit));
         return id;
