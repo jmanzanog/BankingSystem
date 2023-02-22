@@ -3,6 +3,7 @@ package banking;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Private Variables:<br>
@@ -10,10 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Bank implements BankInterface {
     private Map<Long, Account> accounts;
-    private Random random;
+    private AtomicLong number;
 
     public Bank() {
-        this.random = new Random();
+        this.number = new AtomicLong();
         this.accounts = new ConcurrentHashMap<>();
     }
 
@@ -22,13 +23,13 @@ public class Bank implements BankInterface {
     }
 
     public Long openCommercialAccount(Company company, int pin, double startingDeposit) {
-        Long id = random.nextLong();
+        Long id = Sequence.getInstance().getNextValue();
         this.accounts.put(id, new CommercialAccount(company, id, pin, startingDeposit));
         return id;
     }
 
     public Long openConsumerAccount(Person person, int pin, double startingDeposit) {
-        Long id = random.nextLong();
+        Long id = Sequence.getInstance().getNextValue();
         this.accounts.put(id, new ConsumerAccount(person, id, pin, startingDeposit));
         return id;
     }
@@ -48,6 +49,6 @@ public class Bank implements BankInterface {
     }
 
     public boolean debit(Long accountNumber, double amount) {
-        return this.accounts.get(accountNumber).debitAccount(amount) ;
+        return this.accounts.get(accountNumber).debitAccount(amount);
     }
 }
