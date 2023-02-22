@@ -1,11 +1,18 @@
 package banking;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 public class Sequence {
-    private long currentValue = 0;
+    private AtomicLong currentValue;
 
     private Sequence() {
-        // constructor privado para prevenir instanciación externa
+        reset();
     }
+
+    public  void reset() {
+        this.currentValue = new AtomicLong();
+    }
+
 
     private static final class InstanceHolder {
         static final Sequence instance = new Sequence();
@@ -15,7 +22,7 @@ public class Sequence {
         return InstanceHolder.instance;
     }
 
-    public synchronized long getNextValue() {
-        return ++currentValue;
+    public  long getNextValue() {
+        return currentValue.addAndGet(1);
     }
 }

@@ -15,6 +15,7 @@ public class Bank implements BankInterface {
 
     public Bank() {
         this.accounts = new ConcurrentHashMap<>();
+        Sequence.getInstance().reset();
     }
 
     private Account getAccount(Long accountNumber) {

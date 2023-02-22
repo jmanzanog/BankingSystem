@@ -52,7 +52,6 @@ public abstract class Account {
             this.balance = this.balance - amount;
             return true;
         }
-
         return false;
     }
 }
