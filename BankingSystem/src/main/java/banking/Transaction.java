@@ -16,20 +16,24 @@ public class Transaction {
      * @throws Exception Account validation failed.
      */
     public Transaction(Bank bank, Long accountNumber, int attemptedPin) throws Exception {
-        // complete the function
+        this.accountNumber = accountNumber;
+        this.bank = bank;
+        if (!this.bank.authenticateUser(accountNumber, attemptedPin)) {
+            throw new Exception();
+        }
+
     }
 
     public double getBalance() {
-        // complete the function
-        return -1;
+        return this.bank.getBalance(this.accountNumber);
     }
 
     public void credit(double amount) {
-        // complete the function
+        this.bank.credit(this.accountNumber, amount);
     }
 
     public boolean debit(double amount) {
         // complete the function
-        return true;
+        return this.bank.debit(this.accountNumber, amount);
     }
 }

@@ -32,7 +32,7 @@ public abstract class Account {
         return this.pin == attemptedPin;
     }
 
-    public double getBalance() {
+    public synchronized double getBalance() {
 
         return this.balance;
     }
@@ -42,13 +42,17 @@ public abstract class Account {
         return this.accountNumber;
     }
 
-    public void creditAccount(double amount) {
+    public synchronized void  creditAccount(double amount) {
         this.balance = this.balance + amount;
     }
 
-    public boolean debitAccount(double amount) {
+    public synchronized boolean debitAccount(double amount) {
         // complete the function
+        if (this.balance >= amount){
+            this.balance = this.balance - amount;
+            return true;
+        }
 
-        return this.balance > amount;
+        return false;
     }
 }

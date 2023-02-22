@@ -34,7 +34,6 @@ public class Bank implements BankInterface {
     }
 
     public boolean authenticateUser(Long accountNumber, int pin) {
-
         return this.accounts.get(accountNumber).validatePin(pin);
     }
 
