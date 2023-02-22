@@ -6,8 +6,8 @@ package banking;
  * {@link #bank}: Bank<br>
  */
 public class Transaction {
-    private Long accountNumber;
-    private Bank bank;
+    private final Long accountNumber;
+    private final Bank bank;
 
     /**
      * @param bank          The bank where the account is housed.

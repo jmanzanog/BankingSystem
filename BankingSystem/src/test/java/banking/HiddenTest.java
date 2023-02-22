@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -42,8 +43,8 @@ public class HiddenTest {
         Person person1john = new Person("john", "kennedy", 1);
         Person person2julia = new Person("julia", "singh", 2);
         Person person3daniel = new Person("daniel", "radcliffe", 3);
-        Company company1bob = new Company("bob", 1);
-        Company company2smith = new Company("smith", 2);
+        Company company1bob = new Company(1);
+        Company company2smith = new Company(2);
         john = bank.openConsumerAccount(person1john, 1111, 0.0);
         julia = bank.openConsumerAccount(person2julia, 2222, 456.78);
         daniel = bank.openConsumerAccount(person3daniel, 3333, 500.00);

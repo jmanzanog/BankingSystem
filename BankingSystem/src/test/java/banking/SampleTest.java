@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -35,8 +36,8 @@ public class SampleTest {
         bank = new Bank();
         Person person1ameliaPond = new Person("Amelia", "Pond", 1);
         Person person2roseTyler = new Person("Rose", "Tyler", 2);
-        Company company1acmeCorp = new Company("Acme Corp", 1);
-        Company company2hackerRank = new Company("HackerRank", 2);
+        Company company1acmeCorp = new Company(1);
+        Company company2hackerRank = new Company(2);
         ameliaPond = bank.openConsumerAccount(person1ameliaPond, 1111, 0.0);
         roseTyler = bank.openConsumerAccount(person2roseTyler, 2222, 456.78);
         acmeCorp = bank.openCommercialAccount(company1acmeCorp, 1111, 0.0);

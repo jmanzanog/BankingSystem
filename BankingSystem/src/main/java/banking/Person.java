@@ -1,8 +1,8 @@
 package banking;
 
 public class Person extends AccountHolder {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
 
 
     public Person(String firstName, String lastName, int idNumber) {
@@ -12,7 +12,6 @@ public class Person extends AccountHolder {
     }
 
     public String getFirstName() {
-
         return this.firstName;
     }
 

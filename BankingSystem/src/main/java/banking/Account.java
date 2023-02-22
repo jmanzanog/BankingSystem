@@ -5,27 +5,18 @@ package banking;
  * <br>
  * <p>
  * Private Variables:<br>
- * {@link #accountHolder}: AccountHolder<br>
- * {@link #accountNumber}: Long<br>
+ * : AccountHolder<br>
+ * : Long<br>
  * {@link #pin}: int<br>
  * {@link #balance}: double
  */
 public abstract class Account {
-    private AccountHolder accountHolder;
-    private Long accountNumber;
-    private int pin;
+    private final int pin;
     private double balance;
 
-    protected Account(AccountHolder accountHolder, Long accountNumber, int pin, double startingDeposit) {
-        this.accountHolder = accountHolder;
-        this.accountNumber = accountNumber;
+    protected Account(int pin, double startingDeposit) {
         this.pin = pin;
         this.balance = startingDeposit;
-    }
-
-    public AccountHolder getAccountHolder() {
-
-        return this.accountHolder;
     }
 
     public boolean validatePin(int attemptedPin) {
@@ -33,13 +24,7 @@ public abstract class Account {
     }
 
     public synchronized double getBalance() {
-
         return this.balance;
-    }
-
-    public Long getAccountNumber() {
-
-        return this.accountNumber;
     }
 
     public synchronized void  creditAccount(double amount) {
@@ -47,7 +32,6 @@ public abstract class Account {
     }
 
     public synchronized boolean debitAccount(double amount) {
-        // complete the function
         if (this.balance >= amount){
             this.balance = this.balance - amount;
             return true;
